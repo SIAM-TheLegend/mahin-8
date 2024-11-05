@@ -1,20 +1,50 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
 import { productData } from "../Home/productData";
+import { useState, useEffect, useContext } from "react";
+import { ActiveTabContext } from "@/contexts/ActiveTabContext";
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { setActiveTab } = useContext(ActiveTabContext);
   const product = productData.find((p) => p.id === parseInt(id));
+  const [isInWishlist, setIsInWishlist] = useState(false);
+  const [isInCart, setIsInCart] = useState(false);
 
-  if (!product) {
-    return (
-      <div className="max-w-7xl mx-auto px-4 py-8 text-center">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Product not found</h2>
-      </div>
-    );
-  }
+  useEffect(() => {
+    // Check if product is in wishlist
+    const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+    setIsInWishlist(wishlist.some((item) => item.id === product?.id));
+
+    // Check if product is in cart
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setIsInCart(cart.some((item) => item.id === product?.id));
+  }, [product]);
+
+  const addToCart = () => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    if (!cart.some((item) => item.id === product.id)) {
+      cart.push(product);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      setIsInCart(true);
+      setActiveTab("cart");
+      navigate("/dashboard");
+    }
+  };
+
+  const addToWishlist = () => {
+    const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+    if (!wishlist.some((item) => item.id === product.id)) {
+      wishlist.push(product);
+      setIsInWishlist(true);
+      setActiveTab("wishlist");
+      navigate("/dashboard");
+    }
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  };
 
   const renderStars = (rating) => {
     const stars = [];
@@ -96,9 +126,11 @@ const ProductDetail = () => {
               </div>
 
               <div className="mt-8 flex gap-4">
-                <Button className="flex-1 bg-purple-600 text-white hover:bg-purple-700">Add To Card</Button>
-                <Button variant="outline" className="px-4">
-                  <Heart className="h-5 w-5" />
+                <Button className={`flex-1 ${isInCart ? "bg-green-600" : "bg-purple-600"} text-white hover:bg-purple-700`} onClick={addToCart} disabled={isInCart}>
+                  {isInCart ? "Added to Cart" : "Add To Cart"}
+                </Button>
+                <Button variant="outline" className={`px-4 ${isInWishlist ? "text-red-500" : ""}`} onClick={addToWishlist}>
+                  <Heart className="h-5 w-5" fill={isInWishlist ? "currentColor" : "none"} />
                 </Button>
               </div>
             </div>
