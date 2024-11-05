@@ -1,6 +1,5 @@
 import { useNavigate, useParams, Navigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { productData } from "./productData";
 
 // ProductCard Component
@@ -64,9 +63,6 @@ const ProductExplorer = () => {
       <div className="flex gap-8">
         {/* Sidebar */}
         <div className="w-64 flex-shrink-0">
-          <Badge variant="secondary" className="bg-purple-600 text-white mb-4">
-            Categories
-          </Badge>
           <div className="space-y-2">
             {categories.map((categoryName, index) => (
               <CategoryItem key={index} name={categoryName} active={isActive(categoryName)} onClick={() => handleCategoryClick(categoryName)} />

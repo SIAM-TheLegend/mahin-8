@@ -78,15 +78,15 @@ const ProductDetail = () => {
   return (
     <div className="bg-white">
       {/* Purple Header Section */}
-      <div className="bg-purple-600 py-8 px-4 text-center text-white">
+      <div className="bg-purple-600 py-8 px-4 pb-52 text-center text-white">
         <h1 className="text-2xl font-bold mb-2">Product Details</h1>
         <p className="max-w-2xl mx-auto">Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!</p>
       </div>
 
       {/* Product Content */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="max-w-7xl -mt-52 mx-auto px-4 py-8">
+        <div className="bg-white/25 backdrop-blur-md border-2 border-white rounded-3xl shadow-xl p-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Left: Product Image */}
             <div className="bg-gray-100 rounded-lg overflow-hidden">
               <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
