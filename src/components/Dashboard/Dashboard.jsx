@@ -5,7 +5,7 @@ import Wishlist from "./Wishlist";
 import { ActiveTabContext } from "@/contexts/ActiveTabContext";
 
 const Dashboard = () => {
-  const { activeTab } = useContext(ActiveTabContext);
+  const { activeTab, setActiveTab } = useContext(ActiveTabContext);
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -55,7 +55,7 @@ const Dashboard = () => {
 
       <main className="flex-1 container mx-auto px-4 py-8">
         {activeTab === "cart" && <Cart cart={cart} removeFromCart={removeFromCart} sortOrder={sortOrder} setSortOrder={setSortOrder} />}
-        {activeTab === "wishlist" && <Wishlist wishlist={wishlist} removeFromWishlist={removeFromWishlist} moveToCart={moveToCart} sortOrder={sortOrder} />}
+        {activeTab === "wishlist" && <Wishlist wishlist={wishlist} removeFromWishlist={removeFromWishlist} moveToCart={moveToCart} sortOrder={sortOrder} setSortOrder={setSortOrder} />}
       </main>
     </div>
   );
