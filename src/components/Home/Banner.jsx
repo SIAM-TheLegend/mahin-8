@@ -1,25 +1,23 @@
 export default function Banner() {
   return (
-    <section className="relative bg-gradient-to-br from-purple-600 to-purple-500 px-4 py-12 md:py-24">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid gap-8 md:grid-cols-2 md:items-center">
-          {/* Text Content */}
-          <div className="text-center md:text-left">
-            <h1 className="mb-4 text-3xl font-bold leading-tight text-white md:text-5xl">Upgrade Your Tech Accessorize with Gadget Heaven Accessories</h1>
-            <p className="mb-6 text-lg text-white/90">Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!</p>
-            <button className="rounded-full bg-white px-8 py-3 font-semibold text-purple-600 shadow-lg transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/20">Shop Now</button>
-          </div>
+    <div className="bg-white">
+      {/* Purple Header Section */}
+      <div className="bg-purple-600 px-4 pt-24 pb-96 -mt-20 max-w-7xl mx-auto rounded-3xl text-center text-white">
+        <h1 className="text-5xl font-bold mb-8">
+          Upgrade Your Tech Accessorize with
+          <br />
+          Gadget Heaven Accossories
+        </h1>
+        <p className="max-w-2xl mx-auto">Explore the latest gadgets that will take your experience to the next level. From smart devices to the coolest accessories, we have it all!</p>
+      </div>
 
-          {/* Image Container */}
-          <div className="relative mx-auto max-w-lg transform md:translate-y-8">
-            <div className="overflow-hidden rounded-2xl bg-purple-700 p-4 shadow-2xl">
-              <img src="/placeholder.svg?height=400&width=600" alt="VR Headset" className="w-full object-cover" width={600} height={400} />
-              {/* Reflection Effect */}
-              <div className="absolute inset-0 bg-gradient-to-t from-purple-700/20 to-transparent" />
-            </div>
+      <div className="max-w-5xl -mt-[368px] mx-auto px-4 py-8">
+        <div className="bg-white/25 backdrop-blur-md border-2 border-white rounded-3xl shadow-xl p-10">
+          <div className="bg-gray-100 rounded-lg aspect-[16/9] overflow-hidden">
+            <img src="https://i.ibb.co.com/ZYvsJ53/banner.jpg" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
