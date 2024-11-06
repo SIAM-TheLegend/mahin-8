@@ -11,7 +11,7 @@ const Cart = ({ cart, removeFromCart, sortOrder, setSortOrder }) => {
     return [...items].sort((a, b) => {
       const priceA = parseFloat(a.price.replace(",", ""));
       const priceB = parseFloat(b.price.replace(",", ""));
-      return sortOrder === "asc" ? priceA - priceB : priceB - priceA;
+      return sortOrder === "asc" ? priceB - priceA : priceA - priceB;
     });
   };
 
