@@ -3,6 +3,7 @@ import { ShoppingCart, Heart } from "lucide-react";
 
 export default function Navbar() {
   // const [activeLink, setActiveLink] = useState();
+
   return (
     <nav className="flex items-center max-w-6xl mx-auto justify-between px-8 py-6 bg-white">
       <Link to="/" className="text-lg px-5 py-2 font-bold text-gray-800 bg-gray-100 rounded-xl">
